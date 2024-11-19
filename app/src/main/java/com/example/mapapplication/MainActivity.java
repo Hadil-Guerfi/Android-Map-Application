@@ -9,9 +9,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -39,6 +42,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
+
+        LatLng latlng= new LatLng( 35.821430, 10.634422);
+
+        map.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+        map.moveCamera(CameraUpdateFactory.zoomTo(14f));
+        map.animateCamera(CameraUpdateFactory.zoomTo(14f));
+
+        map.addMarker(new MarkerOptions().position(latlng).title("Hi Hadil"));
     }
 
 //    @Override
